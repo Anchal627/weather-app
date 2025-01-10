@@ -47,7 +47,7 @@ export function Header({ onCityChange }) {
     onCityChange(newCity); // Notify parent component when the input changes
   };
   return (
-    <header className="max-w-10xl shadow-md px-4 py-4 backdrop-blur-md h-20">
+    <header className="max-w-10xl shadow-md px-4 py-4 backdrop-blur-md h-20 border border-gray-800">
       <div className="flex items-center justify-between mx-auto ">
         {/* logo + heading */}
         <div className="flex items-center space-x-3">
