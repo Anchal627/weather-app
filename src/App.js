@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      <div className="min-h-screen">
+      <div className="min-h-screen flex flex-col items-center justify-center">
         <Header onCityChange={handleCityChange} />
         <Content city={city} coordinates={coordinates} />
       </div>

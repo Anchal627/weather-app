@@ -9,7 +9,7 @@ import {
 import { useEffect, useState } from "react";
 
 /* eslint-disable jsx-a11y/img-redundant-alt */
-const API_KEY = "9fb125385f78155d2cd0510781407b5e";
+const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 export function Content({ city, coordinates }) {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -91,10 +91,10 @@ export function Content({ city, coordinates }) {
   };
   return (
     <>
-      <main className="container mx-auto px-4 py-8 ">
-        <div className="text-center mb-8 max-w-xs mx-auto">
+      <main className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 max-w-xs mx-auto ">
           <h2 className="text-4xl font-bold text-white mb-2">{city}</h2>
-          <p className="text-white/80">
+          <p className="text-white/80 sm:text-base text-sm">
             {new Date().toLocaleDateString("en-US", {
               weekday: "long",
               year: "numeric",
@@ -104,7 +104,7 @@ export function Content({ city, coordinates }) {
           </p>
         </div>
         <div className="bg-white/20 backdrop-blur-md rounded-3xl p-8 shadow-lg mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="flex-col items-center justify-center text-center">
               {weather ? (
                 <>
