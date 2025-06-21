@@ -178,7 +178,6 @@ export function Content({ city, coordinates }) {
               </div>
             </div>
           </div>
-          /
         </div>
         <div className="bg-white/20 backdrop-blur-md rounded-3xl p-8 shadow-lg mb-8">
           <div className="flex justify-around items-center">

@@ -16,6 +16,8 @@ export function Header({ onCityChange }) {
               `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${API_KEY}`
             );
             const data = await response.json();
+            console.log("Geocode response:", data);
+
             if (data.results && data.results.length > 0) {
               const location = data.results[0].components;
               const cityName =
@@ -47,7 +49,11 @@ export function Header({ onCityChange }) {
   const handleInputChange = (e) => {
     const newCity = e.target.value;
     setCity(newCity);
-    onCityChange(newCity);
+  };
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && city.trim() !== "") {
+      onCityChange(city.trim());
+    }
   };
 
   return (
@@ -69,18 +75,12 @@ export function Header({ onCityChange }) {
                        focus:ring-white/50"
             value={city}
             onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
           />
           <Search className="absolute right-3 top-2.5 h-5 w-5 text-white/70" />
         </div>
 
         {/* Current Location Button */}
-        <button
-          onClick={getLocation}
-          className="w-full md:w-auto flex items-center justify-center gap-2 bg-white/30 hover:bg-white/70 transition text-black rounded-full px-4 py-2"
-        >
-          <MapPin className="h-6 w-6" />
-          <span className="text-lg font-semibold">Current Location</span>
-        </button>
       </div>
     </header>
   );
