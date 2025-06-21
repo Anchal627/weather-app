@@ -4,6 +4,7 @@ import {
   SunriseIcon,
   SunsetIcon,
   Thermometer,
+  ThermometerIcon,
   Wind,
 } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -55,6 +56,10 @@ export function Content({ city, coordinates }) {
     fetchWeather();
   }, [city, coordinates]);
 
+  const capitalize = (str) => {
+    if (typeof str !== "string") return "";
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  };
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -93,7 +98,10 @@ export function Content({ city, coordinates }) {
     <>
       <main className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <div className="text-center mb-8 max-w-xs mx-auto ">
-          <h2 className="text-4xl font-bold text-white mb-2">{city}</h2>
+          <h2 className="text-4xl font-bold text-white mb-2">
+            {" "}
+            {capitalize(city)}
+          </h2>
           <p className="text-white/80 sm:text-base text-sm">
             {new Date().toLocaleDateString("en-US", {
               weekday: "long",
@@ -129,7 +137,7 @@ export function Content({ city, coordinates }) {
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-white/10 rounded-xl p-4">
                 <div className="flex items-center space-x-3">
-                  <Thermometer className="h-6 w-6 text-white" />
+                  <ThermometerIcon className="h-6 w-6 text-white" />
                   <div>
                     <p className="text-white/70">Temperature</p>
                     <p className="text-xl font-semibold text-white">
